@@ -11,7 +11,7 @@ passport.serializeUser((user, cb)=>{
 //passport deserializeuser is going to take the id and look that up in the database
 passport.deserializeUser((id, db)=>{
     cb(null, id)
-    .catch(cb());
+    .catch(cb);
 });
 
 passport.use(new localStrategy({
@@ -28,7 +28,7 @@ passport.use(new localStrategy({
             cb(null, user);
         }
     })
-    .catch(cb());
+    .catch(cb);
 }))
 
 module.exports = passport;
