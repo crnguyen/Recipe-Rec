@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models");
-const passport = require("../config/ppConfig")
+const passport = require("../config/ppConfig");
+//const flash = require("connect-flash");
 
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
@@ -35,13 +36,13 @@ router.post("/signup", (req,res)=>{
       //email already exists
       console.log("email already exists")
       //FLASH MESSAGE
-      req.flash("Email already exists. Please try again");
+      req.flash("error", "Email already exists. Please try again");
       res.redirect("/auth/signup");
     }
   })
   .catch(err=>{
     console.log("error", err);
-    req.flash(`Error: ${err}`)
+    req.flash("error", err)
     res.redirect("/auth/signup");
   });
 });
@@ -54,10 +55,10 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get("/logout", (req,res)=>{
+router.get('/logout', (req, res)=>{
   req.logOut();
-  req.flash("See you soon. Logging out.")
-  res.redirect("/");
+  req.flash('success', 'Byeeee see you soon!')
+  res.redirect('/')
 })
 
 module.exports = router;
