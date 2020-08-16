@@ -48,6 +48,19 @@ app.get('/', (req, res) => {
   //req.flash();
 });
 
+//Recipes Page
+app.get("/recipes", (req, res) => {
+  res.render("recipes");
+})
+
+app.get("/favorites", (req, res) => {
+  res.render("favorites");
+})
+
+app.get("/yourRecipes", (req, res) => {
+  res.render("YourRecipes");
+})
+
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
