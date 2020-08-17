@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
+const axios = require("axios");
+const API_KEY = process.env.API_KEY;
 const app = express();
 const session = require("express-session");
 const SECRET_SESSION = process.env.SECRET_SESSION;
@@ -49,10 +51,51 @@ app.get('/', (req, res) => {
 });
 
 //Recipes Page
+//pulling data from API
+
+// app.get("/recipes", (req, res) => {
+//   // let id = 716429;
+//   let qs = {
+//     params: {
+//       // s: "bagels",
+//       apiKey: API_KEY
+//     } 
+//   }
+//   axios.get("https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey="+API_KEY, qs)
+//   .then((response) => {
+//     console.log(response)
+//     // let title = response.data.title
+//     //console.log(title);
+//     res.render("recipes");
+//   })
+//   .catch(err=>{
+//     console.log(err);
+//   })
+//   //res.render("recipes");
+// })
+
 app.get("/recipes", (req, res) => {
-  res.render("recipes");
+  let search = req.query.searchRecipe;
+  let qs = {
+    params: {
+      s: search,// fix this
+      apiKey: API_KEY
+    }
+  }
+  axios.get("https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey="+API_KEY, qs)
+  .then((response) => {
+    console.log(response.data)
+    let recipes = response.data.Search
+    console.log(recipes);
+    res.render("recipes", {data: recipes});
+  })
+  .catch(err => {
+    console.log(err);
+  })
 })
 
+
+// GET ROUTES
 app.get("/favorites", (req, res) => {
   res.render("favorites");
 })
@@ -65,6 +108,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
+//AUTH
 app.use('/auth', require('./routes/auth'));
 
 const port = process.env.PORT || 3000;

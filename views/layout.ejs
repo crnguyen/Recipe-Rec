@@ -5,30 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RecipeRec</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
   <body>
     <%- include partials/alerts %>
     <header>
       <nav>
-        <ul>
-          <% if (!currentUser) { %>
-            <li><a href="/">RecipeRec</a></li>
-            <li><a href="/recipes">Recipes</a></li>
-            <li><a href="/auth/login">Login</a></li>
-            <li><a href="/auth/signup">Signup</a></li>
-          <% } else { %>
-            <li><a href="/">RecipeRec</a></li>
-            <li><a href="/recipes">Recipes</a></li>
-            <li><a href="/favorites">Favorites</a></li>
-            <li><a href="/yourRecipes">YourRecipes</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
-          <% } %>
-          
-        </ul>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">RecipeRec</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if (!currentUser) { %>
+          <li><a href="/">RecipeRec</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/signup">Signup</a></li>
+        <% } else { %>
+          <li><a href="/">RecipeRec</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/favorites">Favorites</a></li>
+          <li><a href="/yourRecipes">YourRecipes</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+          <li><a href="/profile">Profile</a></li>
+        <% } %>
+      </ul>
+    </div>
       </nav>
     </header>
-    <h1>RecipeRec</h1>
     <%- body %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>

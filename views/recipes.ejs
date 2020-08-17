@@ -1,1 +1,31 @@
-<h1>Recipe page is working</h1>
+<div class="recipePage">
+    <div class="recipePageTitle">
+        <h1>Recipes</h1>
+    </div>
+
+
+    <!-- display all recipes -->
+    <div class="recipePageContent">
+        <h3>Recipe details go here</h3>
+        <% if (recipes) { %>
+        <% recipes.forEach(function(r) { %>
+            <div class="recipeTitle">
+              <h2><%= r.title %></h2>
+            </div>
+
+            <form method="GET" action="/recipes">
+                <label for="searchRecipe"> </label>
+                <input id="recipeFilter" type="text" name="searchRecipe">
+                <input type="submit" id="searchButton"> 
+            </form>
+
+              <!-- <form method="POST" action="/recipes">
+                <input hidden type="text" name="name" value="<%= r.title %>">
+                <button class="btn btn-primary" id="button" type="submit">Add to Favorites</button>
+              </form> -->
+        <% }); %>
+        <% } else { %> 
+            <div>No recipe found...sorry</div>
+        <% } %>
+    
+</div>
