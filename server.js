@@ -75,19 +75,15 @@ app.get('/', (req, res) => {
 // })
 
 app.get("/recipes", (req, res) => {
+  console.log(req.query)
   let search = req.query.searchRecipe;
-  let qs = {
-    params: {
-      s: search,// fix this
-      apiKey: API_KEY
-    }
-  }
-  axios.get("https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey="+API_KEY, qs)
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&apiKey=${API_KEY}`)
   .then((response) => {
-    console.log(response.data)
-    let recipes = response.data.Search
-    console.log(recipes);
-    res.render("recipes", {data: recipes});
+    console.log(response.data.results)
+    res.render("recipes", {recipes: response.data.results});
+    // let recipes = response.data.Search
+    // console.log(recipes);
+    //res.render("recipes", {data: recipes});
   })
   .catch(err => {
     console.log(err);

@@ -3,7 +3,12 @@
         <h1>Recipes</h1>
     </div>
 
-
+    <form method="GET" action="/recipes">
+      <label for="searchRecipe">Search for a Recipe</label>
+      <input id="recipeFilter" type="text" name="searchRecipe">
+      <input type="submit" id="searchButton"> 
+  </form>
+  
     <!-- display all recipes -->
     <div class="recipePageContent">
         <h3>Recipe details go here</h3>
@@ -12,12 +17,6 @@
             <div class="recipeTitle">
               <h2><%= r.title %></h2>
             </div>
-
-            <form method="GET" action="/recipes">
-                <label for="searchRecipe"> </label>
-                <input id="recipeFilter" type="text" name="searchRecipe">
-                <input type="submit" id="searchButton"> 
-            </form>
 
               <!-- <form method="POST" action="/recipes">
                 <input hidden type="text" name="name" value="<%= r.title %>">
