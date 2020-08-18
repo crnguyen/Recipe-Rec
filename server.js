@@ -52,28 +52,6 @@ app.get('/', (req, res) => {
 
 //Recipes Page
 //pulling data from API
-
-// app.get("/recipes", (req, res) => {
-//   // let id = 716429;
-//   let qs = {
-//     params: {
-//       // s: "bagels",
-//       apiKey: API_KEY
-//     } 
-//   }
-//   axios.get("https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey="+API_KEY, qs)
-//   .then((response) => {
-//     console.log(response)
-//     // let title = response.data.title
-//     //console.log(title);
-//     res.render("recipes");
-//   })
-//   .catch(err=>{
-//     console.log(err);
-//   })
-//   //res.render("recipes");
-// })
-
 app.get("/recipes", (req, res) => {
   console.log(req.query)
   let search = req.query.searchRecipe;
@@ -81,12 +59,23 @@ app.get("/recipes", (req, res) => {
   .then((response) => {
     console.log(response.data.results)
     res.render("recipes", {recipes: response.data.results});
-    // let recipes = response.data.Search
-    // console.log(recipes);
-    //res.render("recipes", {data: recipes});
   })
   .catch(err => {
     console.log(err);
+  })
+})
+
+//grabbing recipe details based on id
+app.get("details", (req,res) => {
+  let recipeID = req.query.id;
+  axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
+  .then((response)=>{
+    let recipeDetails = response.data;
+    console.log(recipeDetails);
+    res.render("details", {data: recipeDetails})
+  })
+  .catch(err=>{
+    console.log(err)
   })
 })
 

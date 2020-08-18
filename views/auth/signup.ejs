@@ -1,26 +1,32 @@
 
-<div class="signupPage">
+<div class="main">
 <h2>SignUp Here</h2>
+<br>
+<br>
+<div class="forms">
 <form action="/auth/signup" method="POST">
-  <label for="new-email">Email</label>
+  <label for="new-email" class="formStyle">Email</label>
   <br>
-  <input id="new-email" type="email" name="email">
-  <br>
-  <br>
-
-  <label for="new-name">Name</label>
-  <br>
-  <input id="new-name" type="text" name="name">
+  <input id="new-email" type="email" name="email" style="font-size:20px; text-align:center">
   <br>
   <br>
 
-  <label for="new-password">Password</label>
+  <label for="new-name" class="formStyle">Name</label>
   <br>
-  <input id="new-password" type="password" name="password">
+  <input id="new-name" type="text" name="name" style="font-size:20px; text-align:center">
+  <br>
+  <br>
+
+  <label for="new-password" class="formStyle">Password</label>
+  <br>
+  <input id="new-password" type="password" name="password" style="font-size:20px; text-align:center">
   <br>
   <br> 
 
   <input type="submit" value="Sign up">
   <br>
 </form>
+<br>
+<h6>Already have an account? <a href="/auth/login" class="link" style="text-decoration:underline">Login</a> </h6>
+</div>
 </div>

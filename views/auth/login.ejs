@@ -1,19 +1,25 @@
 
-<div class="loginPage">
+<div class="main">
 <h2>Login Here</h2>
+<br>
+<br>
+<div class="forms">
 <form action="/auth/login" method="POST">
-  <label for="auth-email">Email</label>
+  <label for="auth-email" class="formStyle">Email</label>
   <br>
-  <input id="auth-email" type="email" name="email">
+  <input id="auth-email" type="email" name="email" style="font-size:20px; text-align:center">
   <br>
   <br>
 
-  <label for="auth-password">Password</label>
+  <label for="auth-password" class="formStyle">Password</label>
   <br>
-  <input id="auth-password" type="password" name="password">
+  <input id="auth-password" type="password" name="password" style="font-size:20px; text-align:center">
   <br>
   <br>
 
   <input type="submit" value="Log In">
 </form>
+<br>
+<h6>Don't have an account? <a href="/auth/signup" class="link" style="text-decoration:underline">SignUp</a> </h6>
+</div>
 </div>

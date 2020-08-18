@@ -1,0 +1,28 @@
+<!-- When you click on a reciple title, render search results here -->
+<% if (data) %>
+<% data.forEach(t=> { %>
+    <div>
+        <a id="" href="/recipes/<%= t.id %>"> <%t.title%> </a>
+        <img src="<%=t.image %>" alt="recipeImage">
+    </div>
+<% }) ; %> 
+<% } else { %>
+    <h5>No recipe found</h5>
+<% } %> 
+
+<!-- form to add a comment-->
+<div>
+    <h4>Add a Comment:</h4>
+    <form method="POST" action="/comments">
+      <input type="hidden" name="recipeId" value="<%= t.id %>" />
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
+      <label for="comment">Comment</label>
+      <input type="text" id="content" name="content" required />
+      <input type="submit" />
+    </form>
+  </div>
+  <br />
+  
+<a href="/recipes">&larr; Back To Recipes</a>
+
