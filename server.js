@@ -46,8 +46,6 @@ app.use((req, res, next)=>{
 app.get('/', (req, res) => {
   //res.locals.alerts = req.flash();
   res.render('index', {alerts: res.locals.alerts });
-  //console.log(res.locals.alerts)
-  //req.flash();
 });
 
 //Recipes Page
@@ -66,8 +64,9 @@ app.get("/recipes", (req, res) => {
 })
 
 //grabbing recipe details based on id
-app.get("details", (req,res) => {
-  let recipeID = req.query.id;
+app.get("/details", (req,res) => {
+  let recipeID = req.params.id;
+  console.log(recipeID)
   axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
   .then((response)=>{
     let recipeDetails = response.data;
