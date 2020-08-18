@@ -34,3 +34,9 @@ nav {
     font-size: 20px;
     width: auto;
 }
+
+textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 20%;
+}
