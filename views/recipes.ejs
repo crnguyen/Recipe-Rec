@@ -1,6 +1,6 @@
 <div class="main">
     <div class="recipePageTitle">
-        <h1>Recipes</h1>
+        <h2>Recipes</h2>
     </div>
 
     <form method="GET" action="/recipes">
@@ -10,7 +10,7 @@
           <input type="submit" id="searchButton"> 
         </div>
       <br>
-  </form>
+    </form>
   <br>
 
     <!-- display all recipes -->
@@ -18,15 +18,17 @@
         <% if (recipes) { %>
         <% recipes.forEach(function(r) { %>
             <div class="recipeContent">
-                <a id="" href="/details/<%=r.id %> "> <h2><%= r.title %></h2> </a>
+                <a id="" href="/details/<%=r.id %> "> <h4><%= r.title %></h4> </a>
                 <%= r.id %>
               <br>
               <img src="<%= r.image %>" alt="recipeImg">
-            </div>
-              <!-- <form method="POST" action="/recipes">
-                <input hidden type="text" name="name" value="<%= r.title %>">
-                <button class="btn btn-primary" id="button" type="submit">Add to Favorites</button>
-              </form> -->
+              <form method="POST" action="/favoriterecipes">
+                <input hidden type="text" name="title" id="title" value="<%= r.title %>">
+                <input hidden type="text" name="image" id="image" value="<%= r.image %>">
+                <button id="favoritesButton" class="btn btn-primary" id="button" type="submit">Add to Favorites</button>
+              </form> 
+        </div>
+
         <% }); %>
         <% } else { %> 
             <div>No recipe found...sorry</div>

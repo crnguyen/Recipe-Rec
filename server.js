@@ -12,6 +12,7 @@ const flash = require("connect-flash");
 // require authorization middleware at top of page
 const isLoggedIn = require("./middleware/isLoggedIn");
 const { response } = require('express');
+const db = require('./models');
 
 app.set('view engine', 'ejs');
 
@@ -68,14 +69,25 @@ app.get("/recipes", (req, res) => {
 
 //grabbing recipe details based on id
 app.get("/details/:id", (req,res) => {
-  console.log("71", req.params.id);
+  //console.log("71", req.params.id);
   let recipeID = req.params.id;
   //console.log(recipeID)
-  axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
+  axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&addRecipeInformation=true&apiKey=${API_KEY}`)
   .then((response)=>{
     let recipeDetails = response.data;
     console.log("77", recipeDetails);
-    res.render("details", {details: recipeDetails});
+    db.comments.findAll({
+      where: { recipeId: recipeID },
+      include: [db.user]
+    })
+    .then(comments=>{
+      console.log(req.user)
+      res.render("details", {details: recipeDetails, comments, user: req.user});
+      }
+    )
+    .catch(err=>{
+      res.send("error", err);
+    })
   })
   .catch(err=>{
     console.log(err)
@@ -95,6 +107,8 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
+app.use("/favoriterecipes", require("./routes/favorites")) 
+app.use("/comments", require("./routes/comments"))
 //AUTH
 app.use('/auth', require('./routes/auth'));
 

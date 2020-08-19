@@ -14,8 +14,7 @@ nav {
 }
 
 .recipePage {
-    height: 900px;
-    width: auto;
+    height: 450px;
     overflow-y: scroll; 
 }
 
@@ -24,10 +23,19 @@ nav {
     display: inline-block;
     margin: 5px;
     text-align: center;
-    max-width: 500px;
-    min-width: 500px;
-    max-height: 600px;
-    min-height: 600px;
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.detailsPage {
+  padding: 20px;
+}
+
+.details {
+  overflow-y: scroll; 
+  height: 300px;
 }
 
 #searchButton {

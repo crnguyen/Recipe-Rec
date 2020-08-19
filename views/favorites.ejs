@@ -2,3 +2,10 @@
     <h1>Favorited Recipes</h1>
     <h3>Oh no! Looks like you don't have any favorites yet. Check out the <a href="/recipes" class="link">recipes</a> page to add some favorites! </h3>
 </div>
+
+
+<h1>FAVORITE RECIPES</h1>
+
+<% favorites.forEach(f => { %>
+<%= f.name %>
+<% }) %>
