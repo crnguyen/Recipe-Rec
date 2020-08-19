@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 
 // require authorization middleware at top of page
 const isLoggedIn = require("./middleware/isLoggedIn");
+const { response } = require('express');
 
 app.set('view engine', 'ejs');
 
@@ -55,8 +56,10 @@ app.get("/recipes", (req, res) => {
   let search = req.query.searchRecipe;
   axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&apiKey=${API_KEY}`)
   .then((response) => {
-    console.log(response.data.results)
-    res.render("recipes", {recipes: response.data.results});
+    let searchResults = response.data.results;
+    console.log(searchResults)
+    //response.data.results[0].id;
+    res.render("recipes", {recipes: searchResults});
   })
   .catch(err => {
     console.log(err);
@@ -64,20 +67,20 @@ app.get("/recipes", (req, res) => {
 })
 
 //grabbing recipe details based on id
-app.get("/details", (req,res) => {
+app.get("/details/:id", (req,res) => {
+  console.log("71", req.params.id);
   let recipeID = req.params.id;
-  console.log(recipeID)
+  //console.log(recipeID)
   axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
   .then((response)=>{
     let recipeDetails = response.data;
-    console.log(recipeDetails);
-    res.render("details", {data: recipeDetails})
+    console.log("77", recipeDetails);
+    res.render("details", {details: recipeDetails});
   })
   .catch(err=>{
     console.log(err)
   })
 })
-
 
 // GET ROUTES
 app.get("/favorites", (req, res) => {
@@ -97,7 +100,7 @@ app.use('/auth', require('./routes/auth'));
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log(`🎧 You're listening to the smooth sounds of port ${port} 🎧`);
+  console.log(`YOU ARE ON PORT ${port} 😎`);
 });
 
 module.exports = server;

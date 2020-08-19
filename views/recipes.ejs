@@ -5,8 +5,10 @@
 
     <form method="GET" action="/recipes">
       <label for="searchRecipe" style="font-size:20px">Search for a Recipe</label>
-      <input id="recipeFilter" style="text-align:center;font-size:20px" type="text" name="searchRecipe">
-      <input type="submit" id="searchButton"> 
+      <div class="forms">
+          <input id="recipeFilter" style="text-align:center;font-size:20px" type="text" name="searchRecipe">
+          <input type="submit" id="searchButton"> 
+        </div>
       <br>
   </form>
   <br>
@@ -16,8 +18,8 @@
         <% if (recipes) { %>
         <% recipes.forEach(function(r) { %>
             <div class="recipeContent">
-                <a id="" href="/details"> <h2><%= r.title %></h2> </a>
-              
+                <a id="" href="/details/<%=r.id %> "> <h2><%= r.title %></h2> </a>
+                <%= r.id %>
               <br>
               <img src="<%= r.image %>" alt="recipeImg">
             </div>
