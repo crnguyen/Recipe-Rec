@@ -3,16 +3,18 @@
 <div class="detailsPage">
   <% if (details) { %>
     <div class="titleAndImage" style="text-align:center">
-          <h3><%= details.title %></h3>
-          <img src="<%= details.image %>" style="width:400px" alt="image">
+          <h4><%= details.title %></h4>
+          <img src="<%= details.image %>" style="width:300px" alt="image">
     </div>
     <div class="details">
-          <p>Summary: <%- details.summary %> </p>
-          <p>Cooking Time: <%= details.cookingMinutes %> </p>
-          <p>Preparation Time: <%= details.preparationMinutes %> </p>
-          <p>Ingredients: <%= details.ingredients %> </p>
-          <p>Instructions: <%- details.instructions %> </p>
-          <p>For more information, check out this page: <a href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
+          <p><strong>Summary:</strong> <%- details.summary %> </p>
+          <p><strong>Cooking Time:</strong> <%= details.cookingMinutes %> </p>
+          <p><strong>Preparation Time:</strong> <%= details.preparationMinutes %> </p>
+          <p><strong>Servings: </strong> <%= details.servings %> </p>
+          <p><strong>Caloric Breakdown:</strong> <%= details.caloricBreakdown %> </p>
+          <p><strong>Ingredients:</strong> <%= details.ingredients %> </p>
+          <p><strong>Instructions:</strong> <%- details.instructions %> </p>
+          <p><strong>For more information, check out this page:</strong> <a href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
   <% } else { %> 
       <p>No recipe information available</p>
   <% } %>
@@ -22,6 +24,7 @@
   <!-- display user comments on details page-->
 
   <hr />
+  <h4>Comments</h4>
   <% if(comments.length > 0) { %> 
   <% comments.forEach(comment => { %>
   <div class="well">
@@ -38,7 +41,7 @@
 
 <!-- form to add a comment-->
 <div>
-  <h4>Add a Comment:</h4>
+  <h5>Add a Comment:</h5>
   <form method="POST" action="/comments">
     <input type="hidden" name="recipeId" value="<%= details.id %>" />
     <input hidden value="<%= user.id %>" type="text" id="userId" name="userId" required />

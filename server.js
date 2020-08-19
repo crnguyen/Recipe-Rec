@@ -60,7 +60,7 @@ app.get("/recipes", (req, res) => {
     let searchResults = response.data.results;
     console.log(searchResults)
     //response.data.results[0].id;
-    res.render("recipes", {recipes: searchResults});
+    res.render("recipes", {recipes: searchResults, user: req.user});
   })
   .catch(err => {
     console.log(err);
@@ -95,9 +95,9 @@ app.get("/details/:id", (req,res) => {
 })
 
 // GET ROUTES
-app.get("/favorites", (req, res) => {
-  res.render("favorites");
-})
+// app.get("/favorites", (req, res) => {
+//   res.render("favorites");
+// })
 
 app.get("/yourRecipes", (req, res) => {
   res.render("YourRecipes");
@@ -107,7 +107,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
-app.use("/favoriterecipes", require("./routes/favorites")) 
+app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
 //AUTH
 app.use('/auth', require('./routes/auth'));
