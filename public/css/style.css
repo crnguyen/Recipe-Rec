@@ -1,14 +1,62 @@
-nav {
-    padding: 10px;
-}
 
 body {
-    background-image: url("https://eatforum.org/content/uploads/2018/05/table_with_food_top_view_900x700.jpg");
+    background-image: url("https://images.startsat60.com/wp-content/uploads/20200218115733/multicultural-family-food.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.a {
+    color: black;
+}
+
+a:hover {
+    font-size: 15px;
+}
+
+.favoritesTitles {
+    font-family: 'Raleway', sans-serif;
+}
+
+.commentsDiv {
+    overflow-y: scroll; 
+    height: 200px;
+}
+
+.alert alert-error{
+    text-align: center;
+}
+
+.alert alert-error{
+    text-align: center;
 }
 
 .main {
     text-align: center;
+    background-color: whitesmoke;
+    width: 50%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    opacity: 0.9
+}
+
+.formButton {
+    width: auto;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+}
+
+.formButton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.formStyle {
+    color: black;
 }
 
 .forms {
@@ -20,7 +68,7 @@ body {
 }
 
 .recipePage {
-    height: 450px;
+    height: 500px;
     overflow-y: scroll; 
 }
 
@@ -33,6 +81,15 @@ body {
     min-width: 400px;
     max-height: 400px;
     min-height: 400px;
+}
+
+.mainDetails {
+    text-align: center;
+    background-color: whitesmoke;
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    opacity: 0.9
 }
 
 .detailsPage {

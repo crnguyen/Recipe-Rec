@@ -1,16 +1,33 @@
 
 <!-- When you click on a reciple title, render results here -->
+<div class="mainDetails">
 <div class="detailsPage">
   <% if (details) { %>
     <div class="titleAndImage" style="text-align:center">
-          <h4><%= details.title %></h4>
+          <h4 class="favoritesTitles"><%= details.title %></h4>
+          <hr />
           <img src="<%= details.image %>" style="width:300px" alt="image">
     </div>
     <div class="details">
           <p><strong>Cuisine Type:</strong> 
             <%= details.cuisines %></p>
           <p><strong>Preparation and Cooking Time:</strong> <%= details.readyInMinutes %> minutes </p>
-          <p><strong>Servings: </strong> <%= details.servings %> </p>
+           <!-- INGREDIENT WIDGET-->
+          <pre id="spoonacular-ingredients" style="display:none">
+            <% details.nutrition.ingredients.forEach(d=>{ %>
+              <%=d.amount%> <%=d.unit%> of <%= d.name %>
+            <% }) %> 
+            </pre>
+            <div id="spoonacular-ingredient-visualizer"></div>
+            <script type="text/javascript" class="widget">
+             var spoonacularServings = `${details.servings}` ;
+             var spoonacularMeasure = 'us';
+             var spoonacularView = 'grid';
+            </script>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+          <br>
+
           <p><strong>Vegetarian? </strong> 
           <% if (details.vegetarian === false) { %>
             NO
@@ -32,11 +49,7 @@
                 YES
               <% } %> </p>
 
-          <p><strong>Ingredients:</strong> 
-            <% details.nutrition.ingredients.forEach(d=>{ %>
-              <li><%=d.amount%> <%=d.unit%> of <%= d.name %></li>
-
-            <% }) %> </p>
+          
           <p><strong>Instructions:</strong> 
             <% if (details.instructions === null) { %>
               Instructions cannot be provided at this time. Please click on Complete Recipes and Details link below.
@@ -44,7 +57,7 @@
             <p><%- details.instructions %> </p>
             <% } %>
 
-          <p><strong>For more information, check out this page:</strong> <a href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
+          <p><strong>For more information, check out this page:</strong> <a class="a" href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
   <% } else { %> 
       <p>No recipe information available</p>
   <% } %>
@@ -55,6 +68,7 @@
 
   <hr />
   <h4>Comments</h4>
+  <div class="commentsDiv">
   <% if(comments.length > 0) { %> 
   <% comments.forEach(comment => { %>
   <div class="well">
@@ -68,7 +82,6 @@
   <% }) %> <% } else { %> <!-- if there are no comments display below-->
   <h3>No comments yet! Add some! </h3>
   <% } %>
-
 <!-- form to add a comment-->
 <div>
   <h5>Add a Comment:</h5>
@@ -81,8 +94,11 @@
   </form>
 </div>
 <br />
+</div>
 
 <br>
 <a href="/recipes">&larr; Back To Recipes</a>
+</div>
+
 </div>
 

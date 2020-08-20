@@ -1,16 +1,18 @@
 <div class="main">
-    <h1>Favorited Recipes</h1>
-</div>
+    <h2>Favorited Recipes</h2>
+    <hr />
 
-<% if(typeof favorites=="undefined"){ %>
-    <h3>Oh no! Looks like you don't have any favorites yet. Check out the <a href="/recipes" class="link">recipes</a> page to add some favorites! </h3>
+
+<% if(favorites.length<=0){ %>
+    <h5>Oh no! Looks like you don't have any favorites yet. Check out the <a class="a" href="/recipes" class="link">RECIPES</a> page to add some favorites! </h5>
 <% } else { %>
     <% favorites.forEach(f => { %>
-        <h2><%= f.name %> </h2>
-        <a href="/details/<%=f.recipeId %>">Link to Details</a>
+        <h4 class="favoritesTitles"><%= f.name %> </h4>
+        <h6><a class="a" href="/details/<%=f.recipeId %>">Link to Details</a></h6>
 
         <form method="POST" action="/favorites/<%= f.name %>/?_method=DELETE">
-            <button class="btn btn-primary" type="submit">Remove this recipe</button>
+            <button class="formButton" type="submit">Remove this recipe</button>
         </form>
     <% }) %>
 <% } %>
+</div>

@@ -4,29 +4,27 @@
     </div>
 
     <form method="GET" action="/recipes">
-      <label for="searchRecipe" style="font-size:20px">Search for a Recipe</label>
+      <label for="searchRecipe" style="font-size:20px; color:black">Search for a Recipe</label>
       <div class="forms">
           <input id="recipeFilter" style="text-align:center;font-size:20px" type="text" name="searchRecipe">
           <input type="submit" id="searchButton"> 
         </div>
-      <br>
     </form>
-  <br>
+    <hr />
 
     <!-- display all recipes -->
     <div class="recipePage">
         <% if (recipes) { %>
         <% recipes.forEach(function(r) { %>
             <div class="recipeContent">
-                <a id="" href="/details/<%=r.id %> "> <h4><%= r.title %></h4> </a>
-                <%= r.id %>
+                <a class="a" href="/details/<%=r.id %> "> <h5><%= r.title %></h5> </a>
               <br>
               <img src="<%= r.image %>" alt="recipeImg">
               <form method="POST" action="/favorites">
                 <input hidden type="text" name="name" id="title" value="<%= r.title %>">
                 <input hidden type="text" name="userId" value="<%= user.id %>">
                 <input hidden type="text" name="recipeId" value="<%= r.id %>">
-                <button id="favoritesButton" class="btn btn-primary" id="button" type="submit">Add to Favorites</button>
+                <button id="favoritesButton" class="formButton" id="button" type="submit">Add to Favorites</button>
               </form> 
         </div>
 
