@@ -28,7 +28,7 @@ router.post("/signup", (req,res)=>{
       //FLASH MESSAGE - success flash
       passport.authenticate("local", {
         successRedirect: "/",
-        successFlash: "Account created and logging in"
+        successFlash: "Account created and logged in"
       })(req,res);
       //before passport authenticate
       //res.redirect("/");
