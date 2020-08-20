@@ -7,23 +7,43 @@
           <img src="<%= details.image %>" style="width:300px" alt="image">
     </div>
     <div class="details">
-          <p><strong>Summary:</strong> <%- details.summary %> </p>
-          <p><strong>Cooking Time:</strong> <%= details.cookingMinutes %> </p>
-          <p><strong>Preparation Time:</strong> <%= details.preparationMinutes %> </p>
-          <strong>Servings: </strong> <%= details.servings %> </p>
-          <p><strong>Vegetarian:</strong> 
+          <p><strong>Cuisine Type:</strong> 
+            <%= details.cuisines %></p>
+          <p><strong>Preparation and Cooking Time:</strong> <%= details.readyInMinutes %> minutes </p>
+          <p><strong>Servings: </strong> <%= details.servings %> </p>
+          <p><strong>Vegetarian? </strong> 
           <% if (details.vegetarian === false) { %>
             NO
           <% } else { %>
             YES
           <% } %> </p>
 
+          <p><strong>Gluten Free? </strong>
+            <% if (details.glutenFree === false) { %>
+              NO
+            <% } else { %>
+              YES
+            <% } %> </p>
+
+            <p><strong>Dairy Free? </strong>
+              <% if (details.dairyFree === false) { %>
+                NO
+              <% } else { %>
+                YES
+              <% } %> </p>
+
           <p><strong>Ingredients:</strong> 
             <% details.nutrition.ingredients.forEach(d=>{ %>
               <li><%=d.amount%> <%=d.unit%> of <%= d.name %></li>
 
             <% }) %> </p>
-          <p><strong>Instructions:</strong> <%- details.instructions %> </p>
+          <p><strong>Instructions:</strong> 
+            <% if (details.instructions === null) { %>
+              Instructions cannot be provided at this time. Please click on Complete Recipes and Details link below.
+            <% } else { %> 
+            <p><%- details.instructions %> </p>
+            <% } %>
+
           <p><strong>For more information, check out this page:</strong> <a href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
   <% } else { %> 
       <p>No recipe information available</p>

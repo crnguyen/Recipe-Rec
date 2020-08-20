@@ -12,6 +12,7 @@
   "production": {
     "database": "authApp",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "use_env_variable": "postgres://ikylxcqcypqoua:1d7cfc8f91de55fcffbf9ba32f38f6a4f73cdde6ac6602951d21c7b17d418227@ec2-52-22-94-132.compute-1.amazonaws.com:5432/d9kj8k9ji2mbo8"
   }
 }
