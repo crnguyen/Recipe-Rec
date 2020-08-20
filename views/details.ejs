@@ -10,9 +10,19 @@
           <p><strong>Summary:</strong> <%- details.summary %> </p>
           <p><strong>Cooking Time:</strong> <%= details.cookingMinutes %> </p>
           <p><strong>Preparation Time:</strong> <%= details.preparationMinutes %> </p>
-          <p><strong>Servings: </strong> <%= details.servings %> </p>
-          <p><strong>Caloric Breakdown:</strong> <%= details.caloricBreakdown %> </p>
-          <p><strong>Ingredients:</strong> <%= details.ingredients %> </p>
+          <strong>Servings: </strong> <%= details.servings %> </p>
+          <p><strong>Vegetarian:</strong> 
+          <% if (details.vegetarian === false) { %>
+            NO
+          <% } else { %>
+            YES
+          <% } %> </p>
+
+          <p><strong>Ingredients:</strong> 
+            <% details.nutrition.ingredients.forEach(d=>{ %>
+              <li><%=d.amount%> <%=d.unit%> of <%= d.name %></li>
+
+            <% }) %> </p>
           <p><strong>Instructions:</strong> <%- details.instructions %> </p>
           <p><strong>For more information, check out this page:</strong> <a href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
   <% } else { %> 

@@ -53,13 +53,12 @@ app.get('/', (req, res) => {
 //Recipes Page
 //pulling data from API
 app.get("/recipes", (req, res) => {
-  console.log(req.query)
+  //console.log(req.query)
   let search = req.query.searchRecipe;
-  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&apiKey=${API_KEY}`)
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&visualizeIngredients=true&apiKey=${API_KEY}`)
   .then((response) => {
     let searchResults = response.data.results;
-    console.log(searchResults)
-    //response.data.results[0].id;
+    //console.log(searchResults)
     res.render("recipes", {recipes: searchResults, user: req.user});
   })
   .catch(err => {
@@ -72,16 +71,17 @@ app.get("/details/:id", (req,res) => {
   //console.log("71", req.params.id);
   let recipeID = req.params.id;
   //console.log(recipeID)
-  axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&addRecipeInformation=true&apiKey=${API_KEY}`)
+  axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
   .then((response)=>{
     let recipeDetails = response.data;
-    console.log("77", recipeDetails);
+    console.log(recipeDetails);
+    //console.log("78", recipeDetails.nutrition.ingredients);
     db.comments.findAll({
       where: { recipeId: recipeID },
       include: [db.user]
     })
     .then(comments=>{
-      console.log(req.user)
+      //console.log(req.user)
       res.render("details", {details: recipeDetails, comments, user: req.user});
       }
     )
