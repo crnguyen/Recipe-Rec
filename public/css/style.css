@@ -1,6 +1,11 @@
 nav {
     padding: 10px;
 }
+
+.brand-logo {
+    text-align: left;
+}
+
 .main {
     text-align: center;
 }
