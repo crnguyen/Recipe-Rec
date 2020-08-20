@@ -2,6 +2,8 @@ const express = require("express");
 const db = require("../models");
 const user = require("../models/user");
 const router = express.Router();
+const methodOverride = require("method-override");
+router.use(methodOverride("_method"));
 
 router.get("/", (req, res) => {
     console.log("_____________", req.user.id)
@@ -34,4 +36,16 @@ router.get("/", (req, res) => {
       })
   });
 
+  router.delete("/:name", (req,res)=>{
+      db.favoriteRecipes.destroy({
+          where: {name: req.params.name}
+      })
+      .then(()=>{
+        res.redirect("/favorites");
+    })
+    .catch(err=>{
+        console.log("___ERROR____")
+    })
+  })
+  
 module.exports = router;

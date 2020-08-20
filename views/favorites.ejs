@@ -8,5 +8,9 @@
     <% favorites.forEach(f => { %>
         <h2><%= f.name %> </h2>
         <a href="/details/<%=f.recipeId %>">Link to Details</a>
+
+        <form method="POST" action="/favorites/<%= f.name %>/?_method=DELETE">
+            <button class="btn btn-primary" type="submit">Remove this recipe</button>
+        </form>
     <% }) %>
 <% } %>
