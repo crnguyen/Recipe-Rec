@@ -107,10 +107,15 @@ app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 
+
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
 //AUTH
 app.use('/auth', require('./routes/auth'));
+
+app.get('*', (req, res) => {
+  res.render('error')
+})
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {

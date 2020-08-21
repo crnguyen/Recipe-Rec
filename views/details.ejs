@@ -1,120 +1,128 @@
-
 <!-- When you click on a reciple title, render results here -->
 <div class="mainDetails">
   <% if (details) { %>
-    <div class="titleAndImage" style="text-align:center">
-          <h4 class="favoritesTitles"><%= details.title %></h4>
-          <hr />
-        
-    </div>
-    <div class="details">
-      <div class="recipeDetails">
-        <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Vegetarian?</strong> 
+  <div class="titleAndImage" style="text-align:center">
+    <h4 class="favoritesTitles"><%= details.title %></h4>
+    <hr />
+
+  </div>
+  <div class="details">
+    <div class="recipeDetails">
+      <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Vegetarian?</strong>
         <% if (details.vegetarian === false) { %>
-          No
+        No
         <% } else { %>
-          Yes
+        Yes
         <% } %> </p>
 
-        <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Gluten Free? </strong>
-          <% if (details.glutenFree === false) { %>
-            No
-          <% } else { %>
-            Yes
-          <% } %> </p>
+      <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Gluten Free? </strong>
+        <% if (details.glutenFree === false) { %>
+        No
+        <% } else { %>
+        Yes
+        <% } %> </p>
 
-          <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Dairy Free? </strong>
-            <% if (details.dairyFree === false) { %>
-              No
-            <% } else { %>
-              Yes
-            <% } %> </p>
+      <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Dairy Free? </strong>
+        <% if (details.dairyFree === false) { %>
+        No
+        <% } else { %>
+        Yes
+        <% } %> </p>
 
-          <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Preparation and Cooking Time:</strong> <%= details.readyInMinutes %> minutes </p>
-          </div>
+      <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Preparation and Cooking
+          Time:</strong> <%= details.readyInMinutes %> minutes </p>
+    </div>
 
 
-          <!-- NUTRITION WIDGET-->
-          <pre id="spoonacular-ingredients" style="display:none">
+    <!-- NUTRITION WIDGET-->
+    <pre id="spoonacular-ingredients" style="display:none">
             <% details.nutrition.ingredients.forEach(d=>{ %>
               <%=d.amount%> <%=d.unit%> of <%= d.name %>
             <% }) %> 
             </pre>
-            <div id="spoonacular-nutrition-visualizer" style="text-align:left"></div>
-            <script type="text/javascript">
-             var spoonacularServings = 2;
-            </script>
-            <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+    <div id="spoonacular-nutrition-visualizer" style="text-align:left"></div>
+    <script type="text/javascript">
+      var spoonacularServings = 2;
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
 
-           <!-- INGREDIENT WIDGET-->
-          <pre id="spoonacular-ingredients" style="display:none">
+    <!-- INGREDIENT WIDGET-->
+    <pre id="spoonacular-ingredients" style="display:none">
             <% details.nutrition.ingredients.forEach(d=>{ %>
               <%=d.amount%> <%=d.unit%> of <%= d.name %>
             <% }) %> 
             </pre>
-            <div id="spoonacular-ingredient-visualizer"></div>
-            <script type="text/javascript" class="widget">
-             var spoonacularServings = `${details.servings}` ;
-             var spoonacularMeasure = 'us';
-             var spoonacularView = 'grid';
-            </script>
-            <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
-          <br>
+    <div id="spoonacular-ingredient-visualizer"></div>
+    <script type="text/javascript" class="widget">
+      var spoonacularServings = `${details.servings}`;
+      var spoonacularMeasure = 'us';
+      var spoonacularView = 'grid';
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+    <br>
 
-          
-          <p><strong style="font-size:larger;text-decoration:underline">Instructions:</strong> 
-            <% if (details.instructions === null) { %>
-              Instructions cannot be provided at this time. Please click on Complete Recipes and Details link below.
-            <% } else { %> 
-            <p><%- details.instructions %> </p>
-            <% } %>
+    <p><strong style="font-size:larger;text-decoration:underline">Instructions:</strong>
+      <% if (details.instructions === null) { %>
+      Instructions cannot be provided at this time. Please click on Complete Recipes and Details link below.
+      <% } else { %>
+    <p><%- details.instructions %> </p>
+    <% } %>
 
-          <p><strong>For more information, check out this page:</strong> <a class="a" style="color:blue" href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>   
-  <% } else { %> 
-      <p>No recipe information available</p>
-  <% } %>
+    <p><strong>For more information, check out this page:</strong> <a class="a" style="color:blue"
+        href="<%= details.sourceUrl %>">Complete Recipe and Details</a> </p>
+    <% } else { %>
+    <p>No recipe information available</p>
+    <% } %>
   </div>
 
   <!-- display user comments on details page-->
   <hr />
-  <div class="commentsDiv">
-  <h4>Comments</h4>
-  <% if(comments.length > 0) { %> 
-  <% comments.forEach(comment => { %>
-  <!-- <div class="comment" style="float:right"> -->
-    <p class="commentChild" style="text-decoration:underline">
-      <%= comment.user.name.toUpperCase() %>: 
-    </p>
-    <p class="commentChild" style="max-width:400px">
-      <%= comment.content %>
-    </p>
-    <p class="commentChild" style="background-color:yellow">
-      <% let str = comment.createdAt %>
-      <% str = str.toString(); %>
-      <% strNew = str.slice(0, -41); %>
-      <%= strNew %>
-    </p>
-
-  <!-- </div> -->
-  <% }) %> <% } else { %> <!-- if there are no comments display below-->
-  <h5 style="color:blue">No comments yet! Add some! </h5>
-  <% } %>
-  <!-- form to add a comment-->
-  <div class="addCommentForm" style="float:left">
+   <!-- form to add a comment-->
+   <div class="addCommentForm" style="float:left;overflow: hidden; padding-left: 10px">
     <h5>Add a Comment:</h5>
     <form method="POST" action="/comments">
       <input type="hidden" name="recipeId" value="<%= details.id %>" />
       <input hidden value="<%= user.id %>" type="text" id="userId" name="userId" required />
       <label hidden for="comment">Comment</label>
-      <textarea type="text" style="text-align:center" id="content" name="content" required></textarea> 
-      <input type="submit"/>
+      <textarea type="text" style="text-align:center" id="content" name="content" required></textarea>
+      <input type="submit" />
     </form>
   </div>
-</div>
-<br>
-<a href="/recipes">&larr; Back To Recipes</a>
+  
+  <div class="commentsDiv">
+    <h4>Comments</h4>
+    <% if(comments.length > 0) { %>
+    <% comments.forEach(comment => { %>
+    <!-- <div class="comment" style="float:right"> -->
+      <div class="fullComments">
+        <div class="commentSection">
+          <p class="commentChild" style="font-weight: 700;">
+            <%= comment.user.name.charAt(0).toUpperCase() + comment.user.name.slice(1) %>:
+          </p>
+          <p class="commentChild">
+            <%= comment.content %>
+          </p>
+        </div>
+        
+        <p class="commentChild">
+          <% let str = comment.createdAt %>
+          <% str = str.toString(); %>
+          <% strNew = str.slice(0, -41); %>
+          <%= strNew %>
+        </p>
+
+      </div>
+
+    <!-- </div> -->
+    <% }) %> <% } else { %>
+    <!-- if there are no comments display below-->
+    <h5 style="color:blue">No comments yet! Add some! </h5>
+    <% } %>
+   
+  </div>
+  <br>
+  <a href="/recipes">&larr; Back To Recipes</a>
 
 </div>
-

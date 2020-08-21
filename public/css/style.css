@@ -19,6 +19,8 @@ a:hover {
 
 .favoritesTitles {
     font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    padding-top: 5px;
 }
 
 .commentsDiv {
@@ -147,9 +149,26 @@ textarea {
   min-height: 20%;
 }
 
-.commentChild {
-    display: inline-block;
+.commentSection {
+    margin: 0 auto;
+    background-color: lightblue;
+    box-shadow: 1px 1px 5px black;
+    border-radius: 5px;
+    text-align: left;
+    padding: 5px 20px;
+    width: 100%;
 }
+
+.commentChild {
+    max-width: 95%;
+}
+
+.fullComments {
+    width: 90%;
+    margin: 5px auto;
+    font-family: 'Roboto', sans-serif;
+}
+
 
 
 
