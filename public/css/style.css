@@ -13,7 +13,7 @@ body {
 }
 
 a:hover {
-    font-size: 15px;
+    font-size: larger;
     color: blue;
 }
 
@@ -38,14 +38,31 @@ a:hover {
     text-align: center;
     background-color: whitesmoke;
     width: 50%;
-    margin: 0 auto;
     padding-bottom: 10px;
-    opacity: 0.9
+    opacity: 0.9;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.recipeMain {
+    text-align: center;
+    background-color: whitesmoke;
+    width: 80%;
+    padding-bottom: 10px;
+    opacity: 0.9;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .formButton {
     width: auto;
-    font-size: 20px;
+    font-size: 15px;
     background-color: black;
     color: white;
 }
@@ -69,19 +86,27 @@ a:hover {
 }
 
 .recipePage {
+    min-height: 0px;
+    max-height: 450px;
+    overflow-y: scroll; 
+}
+
+.favoritesPage {
     height: 500px;
     overflow-y: scroll; 
 }
 
 .recipeContent {
+    font-size: auto;
     border: 1px solid black;
     display: inline-block;
     margin: 5px;
     text-align: center;
-    max-width: 400px;
-    min-width: 400px;
+    max-width: 300px;
+    min-width: 300px;
     max-height: 400px;
     min-height: 400px;
+    vertical-align: top; 
 }
 
 .mainDetails {
@@ -104,17 +129,16 @@ a:hover {
     margin: 10px;
 }
 
-#searchButton {
-    font-size: 20px;
-    width: auto;
-}
-
 #spoonacular-nutrition-visualizer {
     padding-left: 10px;
 }
 
 #spoonacular-ingredient-visualizer {
     padding-left: 10px;
+}
+
+img {
+    max-width: 250px;
 }
 
 textarea {
