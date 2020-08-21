@@ -14,6 +14,7 @@ body {
 
 a:hover {
     font-size: 15px;
+    color: blue;
 }
 
 .favoritesTitles {
@@ -22,7 +23,7 @@ a:hover {
 
 .commentsDiv {
     overflow-y: scroll; 
-    height: 200px;
+    height: 130px;
 }
 
 .alert alert-error{
@@ -92,13 +93,15 @@ a:hover {
     opacity: 0.9
 }
 
-.detailsPage {
-  padding: 20px;
-}
 
 .details {
   overflow-y: scroll; 
-  height: 300px;
+  height: 450px;
+}
+
+.recipeDetailsChild {
+    display: inline-block;
+    margin: 10px;
 }
 
 #searchButton {
@@ -106,8 +109,24 @@ a:hover {
     width: auto;
 }
 
+#spoonacular-nutrition-visualizer {
+    padding-left: 10px;
+}
+
+#spoonacular-ingredient-visualizer {
+    padding-left: 10px;
+}
+
 textarea {
   max-width: 100%;
   min-width: 100%;
   min-height: 20%;
 }
+
+.commentChild {
+    display: inline-block;
+}
+
+
+
+

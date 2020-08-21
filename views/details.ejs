@@ -1,17 +1,52 @@
 
 <!-- When you click on a reciple title, render results here -->
 <div class="mainDetails">
-<div class="detailsPage">
   <% if (details) { %>
     <div class="titleAndImage" style="text-align:center">
           <h4 class="favoritesTitles"><%= details.title %></h4>
           <hr />
-          <img src="<%= details.image %>" style="width:300px" alt="image">
+        
     </div>
     <div class="details">
-          <p><strong>Cuisine Type:</strong> 
-            <%= details.cuisines %></p>
-          <p><strong>Preparation and Cooking Time:</strong> <%= details.readyInMinutes %> minutes </p>
+      <div class="recipeDetails">
+        <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Vegetarian?</strong> 
+        <% if (details.vegetarian === false) { %>
+          No
+        <% } else { %>
+          Yes
+        <% } %> </p>
+
+        <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Gluten Free? </strong>
+          <% if (details.glutenFree === false) { %>
+            No
+          <% } else { %>
+            Yes
+          <% } %> </p>
+
+          <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Dairy Free? </strong>
+            <% if (details.dairyFree === false) { %>
+              No
+            <% } else { %>
+              Yes
+            <% } %> </p>
+
+          <p class="recipeDetailsChild"><strong style="font-size:larger;text-decoration:underline">Preparation and Cooking Time:</strong> <%= details.readyInMinutes %> minutes </p>
+          </div>
+
+
+          <!-- NUTRITION WIDGET-->
+          <pre id="spoonacular-ingredients" style="display:none">
+            <% details.nutrition.ingredients.forEach(d=>{ %>
+              <%=d.amount%> <%=d.unit%> of <%= d.name %>
+            <% }) %> 
+            </pre>
+            <div id="spoonacular-nutrition-visualizer" style="text-align:left"></div>
+            <script type="text/javascript">
+             var spoonacularServings = 2;
+            </script>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+
            <!-- INGREDIENT WIDGET-->
           <pre id="spoonacular-ingredients" style="display:none">
             <% details.nutrition.ingredients.forEach(d=>{ %>
@@ -28,29 +63,8 @@
             <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
           <br>
 
-          <p><strong>Vegetarian? </strong> 
-          <% if (details.vegetarian === false) { %>
-            NO
-          <% } else { %>
-            YES
-          <% } %> </p>
-
-          <p><strong>Gluten Free? </strong>
-            <% if (details.glutenFree === false) { %>
-              NO
-            <% } else { %>
-              YES
-            <% } %> </p>
-
-            <p><strong>Dairy Free? </strong>
-              <% if (details.dairyFree === false) { %>
-                NO
-              <% } else { %>
-                YES
-              <% } %> </p>
-
           
-          <p><strong>Instructions:</strong> 
+          <p><strong style="font-size:larger;text-decoration:underline">Instructions:</strong> 
             <% if (details.instructions === null) { %>
               Instructions cannot be provided at this time. Please click on Complete Recipes and Details link below.
             <% } else { %> 
@@ -63,42 +77,44 @@
   <% } %>
   </div>
 
-  <!-- this section is breaking my page-->
   <!-- display user comments on details page-->
-
   <hr />
-  <h4>Comments</h4>
   <div class="commentsDiv">
+  <h4>Comments</h4>
   <% if(comments.length > 0) { %> 
   <% comments.forEach(comment => { %>
-  <div class="well">
-    <p>
-      <%= comment.user.name %> 
-      <br>
-      <br>
+  <!-- <div class="comment" style="float:right"> -->
+    <p class="commentChild" style="text-decoration:underline">
+      <%= comment.user.name.toUpperCase() %>: 
+    </p>
+    <p class="commentChild" style="max-width:400px">
       <%= comment.content %>
     </p>
-  </div>
-  <% }) %> <% } else { %> <!-- if there are no comments display below-->
-  <h3>No comments yet! Add some! </h3>
-  <% } %>
-<!-- form to add a comment-->
-<div>
-  <h5>Add a Comment:</h5>
-  <form method="POST" action="/comments">
-    <input type="hidden" name="recipeId" value="<%= details.id %>" />
-    <input hidden value="<%= user.id %>" type="text" id="userId" name="userId" required />
-    <label for="comment">Comment</label>
-    <input type="text" id="content" name="content" required />
-    <input type="submit" />
-  </form>
-</div>
-<br />
-</div>
+    <p class="commentChild" style="background-color:yellow">
+      <% let str = comment.createdAt %>
+      <% str = str.toString(); %>
+      <% strNew = str.slice(0, -41); %>
+      <%= strNew %>
+    </p>
 
+  <!-- </div> -->
+  <% }) %> <% } else { %> <!-- if there are no comments display below-->
+  <h5 style="color:blue">No comments yet! Add some! </h5>
+  <% } %>
+  <!-- form to add a comment-->
+  <div class="addCommentForm" style="float:left">
+    <h5>Add a Comment:</h5>
+    <form method="POST" action="/comments">
+      <input type="hidden" name="recipeId" value="<%= details.id %>" />
+      <input hidden value="<%= user.id %>" type="text" id="userId" name="userId" required />
+      <label hidden for="comment">Comment</label>
+      <textarea type="text" style="text-align:center" id="content" name="content" required></textarea> 
+      <input type="submit"/>
+    </form>
+  </div>
+</div>
 <br>
 <a href="/recipes">&larr; Back To Recipes</a>
-</div>
 
 </div>
 
