@@ -18,7 +18,7 @@ body {
 }
 
 .a {
-    color: black;
+    color: #0992FF;
 }
 
 
@@ -30,7 +30,6 @@ a:hover {
 .favoritesTitles {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
-    padding-top: 5px;
 }
 
 .commentsDiv {
@@ -56,10 +55,9 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
-.recipeMain {
+.recipeMain , .mainDetails  {
     text-align: center;
     background-color: whitesmoke;
     width: 80%;
@@ -69,7 +67,6 @@ a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .formButton {
@@ -121,19 +118,10 @@ a:hover {
     vertical-align: top; 
 }
 
-.mainDetails {
-    text-align: center;
-    background-color: whitesmoke;
-    width: 80%;
-    margin: 0 auto;
-    padding-bottom: 10px;
-    opacity: 0.9
-}
-
 
 .details {
   overflow-y: scroll; 
-  height: 450px;
+  height: 380px;
 }
 
 .recipeDetailsChild {
@@ -161,11 +149,11 @@ textarea {
 
 .commentSection {
     margin: 0 auto;
-    background-color: lightblue;
+    background-color: #F5E9CD;
     box-shadow: 1px 1px 5px black;
     border-radius: 5px;
     text-align: left;
-    padding: 5px 20px;
+    padding: 0px 20px;
     width: 100%;
 }
 
@@ -179,7 +167,8 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
-
-
+.footer-copyright {
+    height: 10px;
+}
 
 

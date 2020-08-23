@@ -10,6 +10,14 @@
         <h4 class="favoritesTitles"><%= f.name %> </h4>
         <h6><a class="a" href="/details/<%=f.recipeId %>">Link to Details</a></h6>
 
+        <!-- form to update recipe name  -->
+        <form method="POST" action="/favorites/<%=f.name%>?_method=PUT">
+            <input class="form-control" style="text-align:center; font-size:15px" id="new-name" type="name" name="name" value="<%= f.name %>">
+            <button class="formButton" type="submit">Update Recipe Name</button>
+        </form>
+        <br>
+
+        <!-- form to delete recipe  -->
         <form method="POST" action="/favorites/<%= f.name %>/?_method=DELETE">
             <button class="formButton" type="submit">Remove this recipe</button>
         </form>
