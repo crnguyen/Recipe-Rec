@@ -16,6 +16,7 @@ const isLoggedIn = require("./middleware/isLoggedIn");
 const { response } = require('express');
 const db = require('./models');
 
+
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('dev'));
@@ -77,7 +78,7 @@ app.get("/details/:id", (req,res) => {
   axios.get(`https://api.spoonacular.com/recipes/${recipeID}/information?includeNutrition=true&apiKey=${API_KEY}`)
   .then((response)=>{
     let recipeDetails = response.data;
-    console.log(recipeDetails);
+    //console.log(recipeDetails);
     //console.log("78", recipeDetails.nutrition.ingredients);
     db.comments.findAll({
       where: { recipeId: recipeID },
@@ -98,17 +99,10 @@ app.get("/details/:id", (req,res) => {
 })
 
 // GET ROUTES
-
-// app.get("/yourRecipes", (req, res) => {
-//   res.render("YourRecipes");
-// })
-// app.get("/editUser", (req, res) => {
-//   res.render("YourRecipes");
-// })
-
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', {user: req.user});
 });
+
 
 
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
@@ -122,6 +116,7 @@ app.get('*', (req, res) => {
   res.render('error')
 })
 
+//PORT
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
   console.log(`YOU ARE ON PORT ${port} 😎`);

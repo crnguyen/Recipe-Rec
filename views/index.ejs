@@ -7,6 +7,6 @@
         <h5>Login to search, favorite, and comment on recipes.</h5>
       <% } else { %>
         <h3>A way to stay connected through food.</h3>
-        <h5>You are currently logged in as <%= currentUser.name %> !</h5>
+        <h6>You are currently logged in as <%= currentUser.name.charAt(0).toUpperCase() + currentUser.name.slice(1)%> !</h6>
       <% } %>
 </div>

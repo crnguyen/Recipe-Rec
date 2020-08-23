@@ -1,7 +1,32 @@
 <div class="main">
     <h2>Profile Page</h2>
     <hr/>
-    <h3>Welcome to your profile <%= user.name %>! </h3>
-    <%= user.email %>
-    <h5><a href="user/editUser">Edit Account Information</a></h5>
+    <h3>Welcome to your profile, <%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %>! </h3>
+
+    <button id="show" class="formButton">Show Email</button>
+    <button id="hide" class="formButton">Hide Email</button>
+    <br>
+    <br>
+
+    <div class="userEmail" style="visibility: hidden;">
+        <%= user.email %>
+    </div>
+    <br>   
+
+    <script>
+        document.querySelector("#show").addEventListener("click", showInfo);
+        document.querySelector("#hide").addEventListener("click", hideInfo);
+        let uEmail = document.querySelector(".userEmail")
+        
+        function showInfo(){
+            uEmail.style.visibility="visible"
+        }
+        
+        function hideInfo(){
+            uEmail.style.visibility="hidden"
+        }
+    </script>
+
+
+    <h6><a href="user/editUser">Edit Account Information</a></h6>
 </div>

@@ -1,5 +1,6 @@
 main {
     min-height: 90vh;
+
 }
 
 .alertMessage {
@@ -19,6 +20,7 @@ body {
 .a {
     color: black;
 }
+
 
 a:hover {
     font-size: larger;

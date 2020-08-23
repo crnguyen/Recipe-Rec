@@ -6,8 +6,8 @@ router.get('/editUser', (req, res) => {
     res.render('editUser', {user: req.user});
   })
 
-  //add put and update route to profile page
-router.put('/editUser', (req, res) => {
+ //add put and update route to profile page
+ router.put('/editUser', (req, res) => {
     db.user.update(
         {email: req.body.email}, 
         {where: {email: req.user.email}}
@@ -26,5 +26,4 @@ router.delete('/editUser', (req, res) => {
         console.log(err)
     })
 })
-
 module.exports = router;

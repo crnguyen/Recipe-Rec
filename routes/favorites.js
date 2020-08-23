@@ -6,7 +6,7 @@ const methodOverride = require("method-override");
 router.use(methodOverride("_method"));
 
 router.get("/", (req, res) => {
-    console.log("_____________", req.user.id)
+    //console.log("_____________", req.user.id)
     db.favoriteRecipes.findAll({
         where: {userId: req.user.id} //whover is logged in
     })
@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
             recipeId: formData.recipeId }
       })
       .then(([newFave,created])=>{
-          console.log("favorite recipe created");
+          //console.log("favorite recipe created");
           res.redirect("/favorites");
       })
       .catch(err=>{

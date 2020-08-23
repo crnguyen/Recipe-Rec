@@ -36,10 +36,10 @@
 
     <!-- NUTRITION WIDGET-->
     <pre id="spoonacular-ingredients" style="display:none">
-            <% details.nutrition.ingredients.forEach(d=>{ %>
-              <%=d.amount%> <%=d.unit%> of <%= d.name %>
-            <% }) %> 
-            </pre>
+        <% details.nutrition.ingredients.forEach(d=>{ %>
+        <%=d.amount%> <%=d.unit%> of <%= d.name %>
+        <% }) %> 
+    </pre>
     <div id="spoonacular-nutrition-visualizer" style="text-align:left"></div>
     <script type="text/javascript">
       var spoonacularServings = 2;
@@ -91,8 +91,9 @@
     </form>
   </div>
   
-  <div class="commentsDiv">
-    <h4>Comments</h4>
+  
+    <h5>Comments</h5>
+    <div class="commentsDiv">
     <% if(comments.length > 0) { %>
     <% comments.forEach(comment => { %>
     <!-- <div class="comment" style="float:right"> -->
