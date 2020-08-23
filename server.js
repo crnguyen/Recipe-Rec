@@ -8,6 +8,8 @@ const session = require("express-session");
 const SECRET_SESSION = process.env.SECRET_SESSION;
 const passport = require("./config/ppConfig");
 const flash = require("connect-flash");
+const router = express.Router();
+const methodOverride = require("method-override");
 
 // require authorization middleware at top of page
 const isLoggedIn = require("./middleware/isLoggedIn");
@@ -20,6 +22,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(methodOverride('_method'));
 
 //secret: what we are giving back to the user to use our site / session cookie
 //resave: save the session even if it's modified, make this false
@@ -95,17 +98,13 @@ app.get("/details/:id", (req,res) => {
 })
 
 // GET ROUTES
-// app.get("/favorites", (req, res) => {
-//   res.render("favorites");
+
+// app.get("/yourRecipes", (req, res) => {
+//   res.render("YourRecipes");
 // })
-
-app.get("/yourRecipes", (req, res) => {
-  res.render("YourRecipes");
-})
-
-app.get("/editUser", (req, res) => {
-  res.render("YourRecipes");
-})
+// app.get("/editUser", (req, res) => {
+//   res.render("YourRecipes");
+// })
 
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', {user: req.user});
@@ -114,10 +113,11 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
-app.use('/user', require('./routes/user'))
+app.use("/user", require("./routes/user"))
 //AUTH
 app.use('/auth', require('./routes/auth'));
 
+//GLOBAL ERROR PAGE
 app.get('*', (req, res) => {
   res.render('error')
 })

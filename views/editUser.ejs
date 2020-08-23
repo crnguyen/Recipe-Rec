@@ -4,15 +4,15 @@
     <br />
     <div class="form-group">
         <h4 class="page-subtitle">Update Email</h4>
-        <form method="POST" action="/user/editUser?_method=PUT" class="form-inline">
+        <form method="POST" action="/user/editUser?_method=PUT">
             <input class="form-control" id="update-email" type="email" name="email" value="<%= user.email %>">
             <button class="btn btn-primary blue darken-2" type="submit">Update</button>
         </form>
       </div>
     <br />
     
-    <form method="POST" action="/user/editUser?_method=DELETE">
+    <!-- <form method="POST" action="/user/editUser?_method=DELETE">
         <input hidden type="text" name="user" value="user">
         <button class="btn btn-danger" type="submit">Delete Account</button>
-    </form>
+    </form> -->
 </div>

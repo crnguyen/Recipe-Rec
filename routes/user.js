@@ -8,7 +8,10 @@ router.get('/editUser', (req, res) => {
 
   //add put and update route to profile page
 router.put('/editUser', (req, res) => {
-    db.user.update({email: req.body.email}, {where: {email: req.user.email},})
+    db.user.update(
+        {email: req.body.email}, 
+        {where: {email: req.user.email}}
+        )
     .then(() => {
         res.redirect('/profile')
     })
