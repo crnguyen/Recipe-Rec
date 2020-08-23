@@ -1,0 +1,50 @@
+<!-- <nav>
+    <div class="nav-wrapper black hoverable">
+      <a href="#" class="brand-logo">RecipeRec</a>
+      <ul id="nav-mobile" class="right">
+        <% if (!currentUser) { %>
+          <li><a href="/" style="font-size:15px">RecipeRec</a></li>
+          <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
+          <li><a href="/auth/login" style="font-size:15px">Login</a></li>
+          <li><a href="/auth/signup" style="font-size:15px">Signup</a></li>
+        <% } else { %>
+          <li><a href="/" style="font-size:15px">RecipeRec</a></li>
+          <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
+          <li><a href="/favorites" style="font-size:15px">Favorites</a></li>
+          <li><a href="/auth/logout" style="font-size:15px">Logout</a></li>
+          <li><a href="/profile" style="font-size:15px">Profile</a></li>
+        <% } %>
+      </ul>
+    </div>
+</nav> -->
+
+      <nav>
+        <div class="nav-wrapper black">
+          <a href="#!" class="brand-logo"><img src="" alt=""><i class="material-icons right">restaurant_menu</i> RecipeRec </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <% if (!currentUser) { %>
+                <li><a href="/auth/signup">Signup</a></li>
+                <li><a href="/auth/login">Login</a></li>
+              <% } else { %>
+                <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
+                <li><a href="/favorites" style="font-size:15px">Favorites</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+              <% } %>
+          </ul>
+        </div>
+      </nav>
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/">Home</a></li>
+        <% if (!currentUser) { %>
+            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/login">Login</a></li>
+          <% } else { %>
+            <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
+            <li><a href="/favorites" style="font-size:15px">Favorites</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+          <% } %>
+      </ul>

@@ -8,32 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
   <body>
+    <%- include("partials/nav") %> 
     <%- include partials/alerts %>
-    <header>
-      <nav>
-    <div class="nav-wrapper black hoverable">
-      <a href="#" class="brand-logo">RecipeRec</a>
-      <ul id="nav-mobile" class="right">
-        <% if (!currentUser) { %>
-          <li><a href="/" style="font-size:15px">RecipeRec</a></li>
-          <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
-          <li><a href="/auth/login" style="font-size:15px">Login</a></li>
-          <li><a href="/auth/signup" style="font-size:15px">Signup</a></li>
-        <% } else { %>
-          <li><a href="/" style="font-size:15px">RecipeRec</a></li>
-          <li><a href="/recipes" style="font-size:15px">Recipes</a></li>
-          <li><a href="/favorites" style="font-size:15px">Favorites</a></li>
-          <li><a href="/auth/logout" style="font-size:15px">Logout</a></li>
-          <li><a href="/profile" style="font-size:15px">Profile</a></li>
-        <% } %>
-      </ul>
-    </div>
-      </nav>
-    </header>
-    <%- body %>
+  
+    
+    <main>
+      <%- body %>
+    </main>
+    <%- include("partials/footer") %> 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems, {});
+        });
+    </script>
   </body>
 </html>

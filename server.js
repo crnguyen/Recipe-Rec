@@ -103,13 +103,18 @@ app.get("/yourRecipes", (req, res) => {
   res.render("YourRecipes");
 })
 
+app.get("/editUser", (req, res) => {
+  res.render("YourRecipes");
+})
+
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+  res.render('profile', {user: req.user});
 });
 
 
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
+app.use('/user', require('./routes/user'))
 //AUTH
 app.use('/auth', require('./routes/auth'));
 
