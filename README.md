@@ -18,7 +18,8 @@ Site concept: A way to stay connected through food. Search, save, and comment on
 * Models that interact with databases using Sequelize
 * RESTful routing
 * Search recipes using the Spoonacular API
-* Favorites page that can be updated by adding and deleting recipes
+* Favorites page that can be updated by adding, deleting, and editing recipes
+* Profile page where user can edit their email or delete their account
 
 ## Installation and Setup Instructions
 
@@ -69,7 +70,7 @@ app.use(flash());
 npm i method-override
 ```
 
-## Planning
+## Sprints
 #### 1st sprint: ERD, Wireframing, and Planning : Thursday - Sunday
 
 I spend the first 2-3 days planning what I wanted my app to look like by working on my ERD and hand drawing each page. I also made sure to have a basic understanding of my models and how to set them up. 
@@ -84,9 +85,7 @@ I used the Spoonacular API, which is an API that you have to sign up for and it 
 
 I started with the models that I did have, and ended up redoing them because they did not encompass all the information that I wanted. However, this was an easy fix because I just had to undo the sequelize migration and redo it after adding changes. 
 
-This portion of the project was difficult for me to setup because I wasn't too experienced with Sequelize and it got confusing when I was trying to get attributes from different databases using either req.body or req.params. My code structure was setup correctly, but there were minor nuiances that caused my page to crash - either I was redirecting to the wrong 
-
-
+This portion of the project was difficult for me to setup because I wasn't too experienced with Sequelize and it got confusing when I was trying to get attributes from different databases using either req.body or req.params. My code structure was setup correctly, but there were minor nuiances that caused my page to crash - either I was redirecting to the wrong page or I was calling the wrong database.
 
 #### 4th sprint: CSS, README, and final test : Thursday - Friday
 
@@ -98,10 +97,25 @@ Changes made:
 * Change font
 * Included a picture of food as a background for the homepage
 * Added divs to my page that contained a scrollbar, so that the div would scroll and the main page would remain static
+* Fixe comments section
 
 Final test: My biggest issue was when I reached MVP (a project that checks all the requirements), but my API decided to stop working because I reached the limit. I tried to sign up for a new account, log into an existing account, and reset my password but nothing worked. The Spoonacular site appeared to be down. At this point I couldn't search for recipes and couldn't edit the CSS on the recipes page, so I spent the remaining time completeing the readme, any CSS that I could fix, and cleaning up my code. 
 
+## Models
+#### User Model
+| Column name   | Data Type     | Column name                         | 
+| ------------- | ------------- | ----------------------------------  | 
+| id            | integer       | Serial primary key - auto generated |
+| name          | string        | must be provided                    |
+| email         | string        | must be unique, used for login      |
+| password      | string        | stored as a hash                    |
+| createdAt     | date          | auto generated                      |
+| updatedAt     | date          | auto generated                      |
 
+#### Comments Model
+
+
+#### Favorite Recipe Model
 
 
 
