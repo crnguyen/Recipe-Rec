@@ -157,13 +157,13 @@ app.use(flash());
 ## Sprints
 #### 1st sprint: ERD, Wireframing, and Planning : Thursday - Sunday
 
-I spend the first 2-3 days planning what I wanted my app to look like by working on my ERD and hand drawing the wireframes for each page. I also made sure to have a basic understanding of my models and how to set them up. 
+I spent the first 2-3 days planning what I wanted my app to look like by working on my ERD and hand drawing the wireframes for each page. I also made sure to have a basic understanding of my models and how to set them up. 
 
 #### 2nd sprint: API data, Models, and Routes : Sunday - Tuesday
 
 I chose to build my models and routes first to see how the pages on my app would interact with each other, and to have a basic template for my API data. This took about 2 hours at max. The bulk of the second sprint was spent navigating my API data and incorporating that into my app. 
 
-I used the Spoonacular API, which is an API that you have to sign up for and it comes with a daily limit unless you pay. The more information that you pull from the API, the faster the daily limit is reached. I did't run into any issues with this until I actually got to pull data from my page and search for recipes to test out the functionality of the API, but this was all manageable until the 4th sprint. 
+I used the Spoonacular API, which is an API that you have to sign up for and it comes with a daily limit unless you pay. The more information that you pull from the API, the faster the daily limit is reached. I didn't run into any issues with this until I actually got to pull data from my page and search for recipes to test out the functionality of the API, but this was all manageable until the 4th sprint. 
 
 Code snippet - grabbing API data
 ```javascript
@@ -222,12 +222,31 @@ Changes made:
 * Change font
 * Included a picture of food as a background for the homepage
 * Added divs to my page that contained a scrollbar, so that the div would scroll and the main page would remain static
-* Fixe comments section
+* Fixed comments section
+* Added in other features
 
-Final test: My biggest issue was when I reached MVP (a project that checks all the requirements), but my API decided to stop working because I reached the limit. I tried to sign up for a new account, log into an existing account, and reset my password but nothing worked. The Spoonacular site appeared to be down. At this point I couldn't search for recipes and couldn't edit the CSS on the recipes page, so I spent the remaining time completeing the readme, any CSS that I could fix, and cleaning up my code. 
+Final test: My biggest issue was when I reached MVP (a project that checks all the requirements), but my API decided to stop working because I reached the limit. I tried to sign up for a new account, log into an existing account, and reset my password but nothing worked. The Spoonacular site appeared to be down. At this point I couldn't search for recipes and couldn't edit the CSS on the recipes page, so I spent the remaining time completeing the readme, any CSS that I could fix, cleaning up my code, and waiting for the API to work again. 
+
+Code snippet - cool feature I was able to add after I got the API working again. It provides an image for each ingredient, lets you toggle between viewing the ingredients as a list or grid, and you can even adjust the serving size
+```ejs
+<!-- INGREDIENT WIDGET-->
+    <pre id="spoonacular-ingredients" style="display:none">
+            <% details.nutrition.ingredients.forEach(d=>{ %>
+              <%=d.amount%> <%=d.unit%> of <%= d.name %>
+            <% }) %> 
+            </pre>
+    <div id="spoonacular-ingredient-visualizer"></div>
+    <script type="text/javascript" class="widget">
+      var spoonacularServings = `${details.servings}`;
+      var spoonacularMeasure = 'us';
+      var spoonacularView = 'grid';
+    </script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+```
 
 ## Conclusion
-I had alot of fun with this (especially the CSS!) and felt that it strengthened by understanding of sequelize databases and relationships between models. This is definitely an app that I will be using in order to find recipes that I want to make. Although there are features that I hope to add in the future, I'm happy with the final product. Also shoutout to the TA's that walked me through certain concepts during the start of my project! I was able to take what I learned to build other features.
+I had alot of fun with this (especially the CSS!) and felt that it strengthened by understanding of sequelize databases and relationships between models. This is definitely an app that I will be using in order to find recipes that I want to make. Although there are features that I hope to add in the future, I'm happy with the final product. Also shoutout to the TA's that walked me through certain concepts during the start of my project! Because of this I was able to take what I learned to build other features.
 
 
 
