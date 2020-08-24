@@ -1,5 +1,8 @@
 # RecipeRec
 
+Homepage - not logged in 
+[![Imgur Image](https://i.imgur.com/pb3hvSv.jpg)
+
 ## Concept and User Stories
 
 Site concept: A way to stay connected through food. Search, save, and comment on recipes.
@@ -9,6 +12,7 @@ Site concept: A way to stay connected through food. Search, save, and comment on
 * User needs to be able to have the option to add to/delete from their favorites.
 * User needs to be able to comment on the recipes that they find, and view other people's comments.
 * User need to have a profile page where they can edit account information.
+
 
 ## Features
 
@@ -133,6 +137,7 @@ app.use(passport.session());
 //flash for temporary messages to the user
 app.use(flash());
 ```
+
 ## Routes
 | Routes        | Route Methods Used    | Notes                                             | 
 | ------------- | ----------------------| ----------------------------------                | 
@@ -145,7 +150,7 @@ app.use(flash());
 ## Sprints
 #### 1st sprint: ERD, Wireframing, and Planning : Thursday - Sunday
 
-I spend the first 2-3 days planning what I wanted my app to look like by working on my ERD and hand drawing each page. I also made sure to have a basic understanding of my models and how to set them up. 
+I spend the first 2-3 days planning what I wanted my app to look like by working on my ERD and hand drawing the wireframes for each page. I also made sure to have a basic understanding of my models and how to set them up. 
 
 #### 2nd sprint: API data, Models, and Routes : Sunday - Tuesday
 
@@ -172,6 +177,9 @@ Changes made:
 * Fixe comments section
 
 Final test: My biggest issue was when I reached MVP (a project that checks all the requirements), but my API decided to stop working because I reached the limit. I tried to sign up for a new account, log into an existing account, and reset my password but nothing worked. The Spoonacular site appeared to be down. At this point I couldn't search for recipes and couldn't edit the CSS on the recipes page, so I spent the remaining time completeing the readme, any CSS that I could fix, and cleaning up my code. 
+
+## Conclusion
+I had alot of fun with this (especially the CSS!) and felt that it strengthened by understanding of sequelize databases and relationships between models. This is definitely an app that I will be using in order to find recipes that I want to make. Although there are features that I hope to add in the future, I'm happy with the final product. Also shoutout to the TA's that walked me through certain concepts during the start of my project! I was able to take what I learned to build other features.
 
 
 
