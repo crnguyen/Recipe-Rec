@@ -9,6 +9,9 @@ Example of recipe page after a search
 Details page for a recipe
 ![Imgur Image](https://i.imgur.com/s0kuYVs.jpg)
 
+## Link to App
+
+https://reciperec-cristina.herokuapp.com
 
 ## Concept and User Stories
 
@@ -19,7 +22,6 @@ Site concept: A way to stay connected through food. Search, save, and comment on
 * User needs to be able to have the option to add to/delete from their favorites.
 * User needs to be able to comment on the recipes that they find, and view other people's comments.
 * User need to have a profile page where they can edit account information.
-
 
 ## Features
 
