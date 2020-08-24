@@ -104,7 +104,6 @@ app.get('/profile', isLoggedIn, (req, res) => {
 });
 
 
-
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
 app.use("/user", require("./routes/user"))

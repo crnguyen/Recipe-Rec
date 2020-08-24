@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require("../models");
 
-//post comment on recipe and then redirect to recipe comment page
+//post comment on recipe and then redirect to details comment page
 router.post("/", (req,res)=> {
     let commentData = req.body;
     console.log("this is the comment data: ", commentData);

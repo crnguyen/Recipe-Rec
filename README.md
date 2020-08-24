@@ -4,10 +4,11 @@
 
 Site concept: A way to stay connected through food. Search, save, and comment on recipes.
 
-* User needs to be able to login to access recipes and add comments
-* User needs to be able to navigate between homepage, favorited recipes, and recipes page
-* User needs to be able to have the option to add to/delete from their favorites
-* User needs to be able to comment on the recipes that they find, and view other people's comments
+* User needs to be able to login to access recipes, and add comments and favorites.
+* User needs to be able to navigate between homepage, favorited recipes, and recipes page.
+* User needs to be able to have the option to add to/delete from their favorites.
+* User needs to be able to comment on the recipes that they find, and view other people's comments.
+* User need to have a profile page where they can edit account information.
 
 ## Features
 
@@ -21,14 +22,82 @@ Site concept: A way to stay connected through food. Search, save, and comment on
 * Favorites page that can be updated by adding, deleting, and editing recipes
 * Profile page where user can edit their email or delete their account
 
+## Models
+#### User Model
+| Column name   | Data Type     | Notes                               | 
+| ------------- | ------------- | ----------------------------------  | 
+| id            | integer       | Serial primary key - auto generated |
+| name          | string        | must be provided                    |
+| email         | string        | must be unique, used for login      |
+| password      | string        | stored as a hash                    |
+| createdAt     | date          | auto generated                      |
+| updatedAt     | date          | auto generated                      |
+
+#### Comments Model
+| Column name   | Data Type     | Notes                               | 
+| ------------- | ------------- | ----------------------------------  | 
+| id            | integer       | auto generated                      |
+| userId        | integer       | based on user that's logged in      |
+| content       | text          | comment that the user makes         |
+| recipeId      | integer       | recipe id from API                  |
+| createdAt     | date          | auto generated                      |
+| updatedAt     | date          | auto generated                      |
+
+#### Favorite Recipe Model
+| Column name   | Data Type     | Notes                               | 
+| ------------- | ------------- | ----------------------------------  | 
+| id            | integer       | auto generated                      |
+| name          | string        | based on recipe name from API       |
+| userId        | integer       | based on user that's logged in      |
+| recipeId      | integer       | ibased on recipe id from API        |
+| createdAt     | date          | auto generated                      |
+| updatedAt     | date          | auto generated                      |
+
 ## Installation and Setup Instructions
 
+* Create a new project in VSCode or fork and clone a project of your choosing
 * Install node modules from the package.json
 ```
 npm i
 ```
-* If starting from scratch -  install express, express layouts, axios, session, passport, connect-flash, dotenv
+* If starting from scratch -  install express, express layouts, pg, axios, session, passport, connect-flash, dotenv, sequelize, nodemon, method-override
 ```
+npm i {name of package}
+```
+
+* Setup models using Sequelize
+
+In terminal (either VSCode, iTerm, etc), type in the following:
+```sequelize
+sequelize init
+```
+
+Create sequelize database
+```sequelize
+sequelize db:create {nameOfYourProject}_development
+```
+
+Create models and migrations (replace user with name of model; firstName/lastName/age/email can be replaced with any other attributes )
+```sequelize
+sequelize model:create --name user --attributes firstName:string,lastName:string,age:integer,email:string
+```
+
+Run the migration
+```sequelize
+sequelize db:migrate
+```
+
+In your models folder, you can make associations between different models that you create. Create a new association under //define association here. Below is one example for the user model:
+```javascript
+ static associate(models) {
+      // define association here
+      models.user.hasMany(models.comments)
+      models.user.hasMany(models.favoriteRecipes)
+    }
+```
+
+In your main js file, require the necessary packages:
+```javascript
 require('dotenv').config();
 const express = require('express');
 const layouts = require('express-ejs-layouts');
@@ -63,12 +132,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 //flash for temporary messages to the user
 app.use(flash());
+```
+## Routes
+| Routes        | Route Methods Used    | Notes                                             | 
+| ------------- | ----------------------| ----------------------------------                | 
+| auth.js       | GET, POST             | controls signup/login and auth of user            |
+| comments.js   | POST                  | create comment data on details page               |
+| favorites.js  | GET, POST, PUT, DELETE| favorite, delete a recipe, update recipe's title  |
+| user.js       | GET, PUT, DELETE      | account info page, user can update their email    |
 
-```
-* Install method-override to create a delete feature
-```
-npm i method-override
-```
 
 ## Sprints
 #### 1st sprint: ERD, Wireframing, and Planning : Thursday - Sunday
@@ -101,21 +173,7 @@ Changes made:
 
 Final test: My biggest issue was when I reached MVP (a project that checks all the requirements), but my API decided to stop working because I reached the limit. I tried to sign up for a new account, log into an existing account, and reset my password but nothing worked. The Spoonacular site appeared to be down. At this point I couldn't search for recipes and couldn't edit the CSS on the recipes page, so I spent the remaining time completeing the readme, any CSS that I could fix, and cleaning up my code. 
 
-## Models
-#### User Model
-| Column name   | Data Type     | Column name                         | 
-| ------------- | ------------- | ----------------------------------  | 
-| id            | integer       | Serial primary key - auto generated |
-| name          | string        | must be provided                    |
-| email         | string        | must be unique, used for login      |
-| password      | string        | stored as a hash                    |
-| createdAt     | date          | auto generated                      |
-| updatedAt     | date          | auto generated                      |
 
-#### Comments Model
-
-
-#### Favorite Recipe Model
 
 
 
