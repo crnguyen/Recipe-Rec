@@ -1,11 +1,11 @@
 main {
-    min-height: 90vh;
-
+    min-height: 91vh;
 }
 
 .alertMessage {
     position: relative;
     z-index: 3;
+    text-align: center;
 }
 
 body {
@@ -21,7 +21,6 @@ body {
     color: #0992FF;
 }
 
-
 a:hover {
     font-size: larger;
     color: blue;
@@ -29,12 +28,12 @@ a:hover {
 
 .favoritesTitles {
     font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .commentsDiv {
     overflow-y: scroll; 
-    height: 130px;
+    height: 10vh;
 }
 
 .alert alert-error{
@@ -48,6 +47,8 @@ a:hover {
 .main {
     text-align: center;
     background-color: whitesmoke;
+    min-height: 20vh;
+    max-height: 90vh;
     width: 50%;
     padding-bottom: 10px;
     opacity: 0.9;
@@ -60,6 +61,8 @@ a:hover {
 .recipeMain , .mainDetails  {
     text-align: center;
     background-color: whitesmoke;
+    min-height: 20vh;
+    max-height: 90vh;
     width: 80%;
     padding-bottom: 10px;
     opacity: 0.9;
@@ -95,13 +98,14 @@ a:hover {
 }
 
 .recipePage {
-    min-height: 0px;
-    max-height: 450px;
+    min-height: 20vh;
+    max-height: 50vh;
     overflow-y: scroll; 
 }
 
 .favoritesPage {
-    height: 500px;
+    min-height: 20vh;
+    max-height: 60vh;
     overflow-y: scroll; 
 }
 
@@ -121,7 +125,8 @@ a:hover {
 
 .details {
   overflow-y: scroll; 
-  height: 380px;
+  min-height: 50vh;
+  max-height: 50vh;
 }
 
 .recipeDetailsChild {
@@ -144,12 +149,12 @@ img {
 textarea {
   max-width: 100%;
   min-width: 100%;
-  min-height: 20%;
+  height: 70%;
 }
 
 .commentSection {
     margin: 0 auto;
-    background-color: #F5E9CD;
+    background-color: #fcdcba;
     box-shadow: 1px 1px 5px black;
     border-radius: 5px;
     text-align: left;
@@ -167,8 +172,5 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 
-.footer-copyright {
-    height: 10px;
-}
 
 

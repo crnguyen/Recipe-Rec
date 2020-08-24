@@ -1,12 +1,12 @@
 <div class="main">
     <h2>RecipeRec</h2>
     <hr />
-    <br>
     <% if (!currentUser) { %>
         <h3>A way to stay connected through food.</h3>
         <h5>Login to search, favorite, and comment on recipes.</h5>
       <% } else { %>
         <h3>A way to stay connected through food.</h3>
-        <h6>You are currently logged in as <%= currentUser.name.charAt(0).toUpperCase() + currentUser.name.slice(1)%> !</h6>
+        <br>
+        <h6>You are currently logged in as <%= currentUser.name.charAt(0).toUpperCase() + currentUser.name.slice(1)%>!</h6>
       <% } %>
 </div>

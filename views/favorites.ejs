@@ -1,5 +1,5 @@
 <div class="main">
-    <h2>Favorited Recipes</h2>
+    <h2 class="favoritesTitles">Favorited Recipes</h2>
     <hr />
 
 <div class="favoritesPage">
@@ -7,7 +7,7 @@
     <h5>Oh no! Looks like you don't have any favorites yet. Check out the <a class="a" href="/recipes" class="link">RECIPES</a> page to add some favorites! </h5>
 <% } else { %>
     <% favorites.forEach(f => { %>
-        <h4 class="favoritesTitles"><%= f.name %> </h4>
+        <h4 class="favoritesRecipes" style="font-weight: 300; font-family: Raleway"><%= f.name %></h4> 
         <h6><a class="a" href="/details/<%=f.recipeId %>">Link to Details</a></h6>
 
         <!-- form to update recipe name  -->
