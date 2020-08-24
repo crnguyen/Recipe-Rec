@@ -1,7 +1,14 @@
 # RecipeRec
 
 Homepage - not logged in 
-[![Imgur Image](https://i.imgur.com/pb3hvSv.jpg)
+![Imgur Image](https://i.imgur.com/pb3hvSv.jpg)
+
+Example of recipe page after a search
+![Imgur Image](https://i.imgur.com/vdKzSuD.jpg)
+
+Details page for a recipe
+![Imgur Image](https://i.imgur.com/s0kuYVs.jpg)
+
 
 ## Concept and User Stories
 
@@ -158,11 +165,52 @@ I chose to build my models and routes first to see how the pages on my app would
 
 I used the Spoonacular API, which is an API that you have to sign up for and it comes with a daily limit unless you pay. The more information that you pull from the API, the faster the daily limit is reached. I did't run into any issues with this until I actually got to pull data from my page and search for recipes to test out the functionality of the API, but this was all manageable until the 4th sprint. 
 
-#### 3rd sprint: Models, Sequelize, and Relational Databases : Wednesday - Thursday
+Code snippet - grabbing API data
+```javascript
+//Recipes Page
+//pulling data from API using search query
+app.get("/recipes", (req, res) => {
+  //console.log(req.query)
+  let search = req.query.searchRecipe;
+  axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${search}&visualizeIngredients=true&apiKey=${API_KEY}`)
+  .then((response) => {
+    let searchResults = response.data.results;
+    //console.log(searchResults)
+    res.render("recipes", {recipes: searchResults, user: req.user});
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+```
 
-I started with the models that I did have, and ended up redoing them because they did not encompass all the information that I wanted. However, this was an easy fix because I just had to undo the sequelize migration and redo it after adding changes. 
+#### 3rd sprint: More Models, Sequelize, and Relational Databases : Wednesday - Thursday
+
+I started with the models that I did have, and ended up redoing them because they did not encompass all the information that I wanted. However, this was an easy fix (tedious yet necessary) because I just had to undo the sequelize migration and redo it after adding changes. 
 
 This portion of the project was difficult for me to setup because I wasn't too experienced with Sequelize and it got confusing when I was trying to get attributes from different databases using either req.body or req.params. My code structure was setup correctly, but there were minor nuiances that caused my page to crash - either I was redirecting to the wrong page or I was calling the wrong database.
+
+Code snippet - update title in favoriteRecipes database and favorites page using PUT and UPDATE
+```ejs
+ <!-- form to update recipe name  -->
+        <form method="POST" action="/favorites/<%=f.name%>?_method=PUT">
+            <input class="form-control" style="text-align:center; font-size:15px" id="new-name" type="name" name="name" value="<%= f.name %>">
+            <button class="formButton" type="submit">Update Recipe Name</button>
+        </form>
+        <br>
+```
+```javascript
+//add put and update route to change title of recipe to something you like
+ router.put('/:name', (req, res) => {
+    db.favoriteRecipes.update(
+        {name: req.body.name}, 
+        {where: {name: req.params.name}}
+        )
+    .then(() => {
+        res.redirect('/favorites')
+    })
+})
+```
 
 #### 4th sprint: CSS, README, and final test : Thursday - Friday
 
