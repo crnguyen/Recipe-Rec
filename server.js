@@ -55,6 +55,8 @@ app.get('/', (req, res) => {
 });
 
 //Recipes Page
+// Consider moving all routes into the routes folder and just leaving the home page too
+// Consider deleting some of your commented out code to make it more readable! There are random console.logs and old code bits in some places :)
 //pulling data from API
 app.get("/recipes", (req, res) => {
   //console.log(req.query)
@@ -71,6 +73,7 @@ app.get("/recipes", (req, res) => {
 })
 
 //grabbing recipe details based on id
+// Consider using async await on this route due to there being more than one then statement, but really 2 is fine
 app.get("/details/:id", (req,res) => {
   //console.log("71", req.params.id);
   let recipeID = req.params.id;
