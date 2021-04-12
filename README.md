@@ -250,6 +250,11 @@ Code snippet - cool feature I was able to add after I got the API working again.
 ## Conclusion
 I had alot of fun with this (especially the CSS!) and felt that it strengthened by understanding of sequelize databases and relationships between models. This is definitely an app that I will be using in order to find recipes that I want to make. Although there are features that I hope to add in the future, I'm happy with the final product. Also shoutout to the TA's that walked me through certain concepts during the start of my project! Because of this I was able to take what I learned to build other features.
 
+## Ideas to Implement
+* Mobile optimization
+* Fix styling of layout and colors
+* Create another route for nutrition facts
+
 
 
 
