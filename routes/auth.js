@@ -14,6 +14,7 @@ router.get('/login', (req, res) => {
 
 router.post("/signup", (req,res)=>{
   //console.log(req.body);
+  req.setTimeout(500001);
   db.user.findOrCreate({
     where: { email: req.body.email},
     defaults: {
@@ -37,7 +38,7 @@ router.post("/signup", (req,res)=>{
       console.log("Email already exists")
       //FLASH MESSAGE
       req.flash("error", "Email already exists. Please try again");
-      res.redirect("/auth/signup");
+      res.redirect("/auth/signup"); 
     }
   })
   .catch(err=>{
