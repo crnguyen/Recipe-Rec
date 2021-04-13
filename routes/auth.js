@@ -13,8 +13,8 @@ router.get('/login', (req, res) => {
 });
 
 router.post("/signup", (req,res)=>{
-  //console.log(req.body);
-  req.setTimeout(500001);
+  console.log(req.body);
+  // req.setTimeout(500001);
   db.user.findOrCreate({
     where: { email: req.body.email},
     defaults: {
