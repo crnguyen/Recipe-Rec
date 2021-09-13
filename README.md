@@ -9,6 +9,9 @@ Example of recipe page after a search
 Details page for a recipe
 ![Imgur Image](https://i.imgur.com/s0kuYVs.jpg)
 
+Favorite Recipes page
+![Imgur](https://imgur.com/nCCHbu5.jpg)
+
 ## Link to App
 
 https://reciperec-cristina.herokuapp.com

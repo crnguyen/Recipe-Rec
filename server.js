@@ -16,9 +16,7 @@ const isLoggedIn = require("./middleware/isLoggedIn");
 const { response } = require('express');
 const db = require('./models');
 
-
 app.set('view engine', 'ejs');
-
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
@@ -38,6 +36,7 @@ app.use(session({
 //initialize passport and run session as middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
 //flash for temporary messages to the user
 app.use(flash());
 
@@ -55,8 +54,6 @@ app.get('/', (req, res) => {
 });
 
 //Recipes Page
-// Consider moving all routes into the routes folder and just leaving the home page too
-// Consider deleting some of your commented out code to make it more readable! There are random console.logs and old code bits in some places :)
 //pulling data from API
 app.get("/recipes", (req, res) => {
   //console.log(req.query)
@@ -73,7 +70,6 @@ app.get("/recipes", (req, res) => {
 })
 
 //grabbing recipe details based on id
-// Consider using async await on this route due to there being more than one then statement, but really 2 is fine
 app.get("/details/:id", (req,res) => {
   //console.log("71", req.params.id);
   let recipeID = req.params.id;
@@ -100,24 +96,20 @@ app.get("/details/:id", (req,res) => {
     console.log(err)
   })
 })
-
 // GET ROUTES
 app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile', {user: req.user});
 });
-
 
 app.use("/favorites", isLoggedIn, require("./routes/favorites")) 
 app.use("/comments", require("./routes/comments"))
 app.use("/user", require("./routes/user"))
 //AUTH
 app.use('/auth', require('./routes/auth'));
-
 //GLOBAL ERROR PAGE
 app.get('*', (req, res) => {
   res.render('error')
 })
-
 //PORT
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
